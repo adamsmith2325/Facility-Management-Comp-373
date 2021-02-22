@@ -1,5 +1,9 @@
 package DataAccess;
+import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;  
+
+Dotenv dotenv = Dotenv.load();
+String DATABASE_USERNAME = dotenv.get(“DATABASE_USERNAME”);
 
 
 public class DBConnectionTest {
