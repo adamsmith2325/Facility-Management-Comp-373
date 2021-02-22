@@ -9,7 +9,7 @@ public class FacilityDAO {
     public static Integer getFacilityID(String Name){
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem","root","root");  
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", DATABASE_USERNAME, DATABASE_PASSWORD );  
             Statement stmt=con.createStatement();  
             
             String query = "select * from facilities where Name = " + "'" + Name + "'";
@@ -23,7 +23,7 @@ public class FacilityDAO {
 
         }catch(Exception e){ 
             System.out.println(e);
-            return 999;
+            return 999999;
             }  
         }
 
@@ -33,7 +33,7 @@ public class FacilityDAO {
         public static String getFacilityName(Integer Id){
             try{  
                 Class.forName("com.mysql.jdbc.Driver");  
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem","root","root");  
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem",DATABASE_USERNAME,DATABASE_PASSWORD);  
                 Statement stmt=con.createStatement();  
                 
                 String query = "select * from facilities where idFacilities = " + Id;
