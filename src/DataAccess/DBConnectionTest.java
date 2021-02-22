@@ -6,7 +6,7 @@ public class DBConnectionTest {
     public static void main(String args[]){  
         try{  
         Class.forName("com.mysql.jdbc.Driver");  
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem",DATABASE_USERNAME, DATABASE_PASSWORD);  
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", System.getenv("DATABASE_USERNAME"), System.getenv("DATABASE_PASSWORD"));  
         Statement stmt=con.createStatement();  
         ResultSet rs=stmt.executeQuery("select * from facilities");  
         while(rs.next())  
