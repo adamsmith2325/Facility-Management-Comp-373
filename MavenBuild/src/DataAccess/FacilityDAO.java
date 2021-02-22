@@ -5,11 +5,16 @@ import java.util.stream.IntStream;
 
 public class FacilityDAO {
     
+    Dotenv dotenv = Dotenv.load();
+    String  DBUser = dotenv.get("DATABASE_USERNAME");
+    String  DBPass = dotenv.get("DATABASE_PASSWORD");
+    
+
 
     public static Integer getFacilityID(String Name){
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", System.getenv("DATABASE_USERNAME"), System.getenv("DATABASE_PASSWORD"));  
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", DBUser, DBPass);  
             Statement stmt=con.createStatement();  
             
             String query = "select * from facilities where Name = " + "'" + Name + "'";

@@ -2,15 +2,22 @@ package DataAccess;
 import io.github.cdimascio.dotenv.Dotenv;
 import java.sql.*;  
 
-Dotenv dotenv = Dotenv.load();
-String DATABASE_USERNAME = dotenv.get(“DATABASE_USERNAME”);
+
 
 
 public class DBConnectionTest {
+    
+    Dotenv dotenv = Dotenv.load();
+    String DBUser = dotenv.get("DATABASE_USERNAME");
+    String DBPass = dotenv.get("DATABASE_PASSWORD");
+    
+    
+    
+    
     public static void main(String args[]){  
         try{  
         Class.forName("com.mysql.jdbc.Driver");  
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", System.getenv("DATABASE_USERNAME"), System.getenv("DATABASE_PASSWORD"));  
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/facilitymanagementsystem", DBUser, DBPass);  
         Statement stmt=con.createStatement();  
         ResultSet rs=stmt.executeQuery("select * from facilities");  
         while(rs.next())  
