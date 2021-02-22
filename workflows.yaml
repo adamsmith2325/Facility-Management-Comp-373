@@ -1,0 +1,10 @@
+name: Facility Management System
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Implement secrets
+        env: 
+          DATABASE_USERNAME: ${{ secrxets.DATABASE_USERNAME }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
